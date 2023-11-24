@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fibonacci Number</title>
+</head>
+<body>
+  <script>
+  console.log("Akshay Takalkar");
+  console.log(23006);
+    function fibonacci(n) {
+      if (n <= 1) {
+        return n;
+      }
+
+      const fib = [0, 1];
+      for (let i = 2; i <= n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+
+      return fib[n];
+    }
+
+    // Example usage:
+    const fibonacciIndex = 8;
+    console.log(`Fibonacci number at index ${fibonacciIndex} is:`, fibonacci(fibonacciIndex)); // Output: 21
+  </script>
+</body>
+</html>

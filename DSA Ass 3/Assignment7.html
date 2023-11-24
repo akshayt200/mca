@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>unique path</title>
+</head>
+<body>
+  <script>
+  console.log("Akshay Takalkar");
+  console.log(23006);
+   function uniquePaths(m, n) {
+   const dp = Array(m).fill().map(() => Array(n).fill(0));
+
+  // Base case: there's only one way to reach cells in the first row/column
+  for (let i = 0; i < m; i++) {
+    dp[i][0] = 1;
+  }
+  for (let j = 0; j < n; j++) {
+    dp[0][j] = 1;
+  }
+
+  // Calculate unique paths for each cell
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+    }
+  }
+
+  return dp[m - 1][n - 1];
+}
+
+const m = 3; // number of rows
+const n = 3; // number of columns
+console.log("Number of unique paths:", uniquePaths(m, n));
+</script>
+</body>
+</html>
+

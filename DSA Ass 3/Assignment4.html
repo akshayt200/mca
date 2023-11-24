@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quick Sort Example</title>
+</head>
+<body>
+  <script>
+  console.log("Akshay Takalkar");
+  console.log(23006);
+    function quickSort(arr) {
+      if (arr.length <= 1) {
+        return arr;
+      }
+
+      const pivot = arr[Math.floor(arr.length / 2)];
+      const left = [];
+      const right = [];
+      const equal = [];
+
+      for (let num of arr) {
+        if (num < pivot) {
+          left.push(num);
+        } else if (num > pivot) {
+          right.push(num);
+        } else {
+          equal.push(num);
+        }
+      }
+
+      return [...quickSort(left), ...equal, ...quickSort(right)];
+    }
+
+    // Example usage:
+    const unsortedArray = [5, 3, 8, 6, 2, 7, 1, 4];
+    console.log(quickSort(unsortedArray)); // Output: [1, 2, 3, 4, 5, 6, 7, 8]
+  </script>
+</body>
+</html>

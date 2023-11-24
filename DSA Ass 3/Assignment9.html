@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Solve N-Queens Util</title>
+</head>
+<body>
+  <script>
+  console.log("Akshay Takalkar");
+  console.log(23006);
+   function isSafe(board, row, col, N) {
+  // Check if there's a queen in the same column
+  for (let i = 0; i < row; i++) {
+    if (board[i][col] === 1) {
+      return false;
+    }
+  }
+
+  // Check upper diagonal on left side
+  for (let i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+    if (board[i][j] === 1) {
+      return false;
+    }
+  }
+
+  // Check upper diagonal on right side
+  for (let i = row, j = col; i >= 0 && j < N; i--, j++) {
+    if (board[i][j] === 1) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function solveNQueensUtil(board, row, N, solutions) {
+  if (row === N) {
+    const solution = [];
+    for (let i = 0; i < N; i++) {
+      solution.push(board[i].join(' '));
+    }
+    solutions.push(solution);
+    return;
+  }
+
+  for (let i = 0; i < N; i++) {
+    if (isSafe(board, row, i, N)) {
+      board[row][i] = 1;
+      solveNQueensUtil(board, row + 1, N, solutions);
+      board[row][i] = 0; // Backtrack
+    }
+  }
+}
+
+function solveNQueens(N) {
+  const board = Array.from({ length: N }, () => Array(N).fill(0));
+  const solutions = [];
+  solveNQueensUtil(board, 0, N, solutions);
+  return solutions;
+}
+
+// Example usage:
+const N = 4; // Change N to get solutions for different board sizes
+const solutions = solveNQueens(N);
+console.log(`Solutions for ${N}-Queens:`);
+solutions.forEach((solution, index) => {
+  console.log(`Solution ${index + 1}:`);
+  solution.forEach(row => console.log(row));
+  console.log(''); // Empty line between solutions
+});
+  </script>
+</body>
+</html>

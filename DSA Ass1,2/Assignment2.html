@@ -1,0 +1,133 @@
+<html>
+<body>
+<script>
+console.log("Akshay Shelke")
+console.log("23008")
+class Node {
+  constructor(element) {
+    this.next = null;
+    this.prev = null;
+    this.element = element;
+  }
+}
+
+class DoubleLinkedlist {
+  constructor() {
+    this.length = 0;
+    this.head = null;
+    this.tail = null;
+  }
+
+  add(element) {
+    const node = new Node(element);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      node.prev = this.tail;
+      this.tail.next = node;
+      this.tail = node;
+    }
+    this.length++;
+  }
+
+  insertAt(element, position) {
+    if (position >= 0 && position <= this.length) {
+      const node = new Node(element);
+      let current = this.head;
+      let previous = null;
+      let index = 0;
+
+      if (position === 0) {
+        if (!this.head) {
+          this.head = node;
+          this.tail = node;
+        } else {
+          node.next = current;
+          current.prev = node;
+          this.head = node;
+        }
+      } else if (position === this.length) {
+        current = this.tail;
+        current.next = node;
+        node.prev = current;
+        this.tail = node;
+      } else {
+        while (index++ < position) {
+          previous = current;
+          current = current.next;
+        }
+        node.next = current;
+        previous.next = node;
+        current.prev = node;
+        node.prev = previous;
+      }
+      this.length++;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  removeAt(position) {
+    if (position >= 0 && position < this.length) {
+      let current = this.head;
+      let previous = null;
+      let index = 0;
+
+      if (position === 0) {
+        this.head = current.next;
+        if (this.length === 1) {
+          this.tail = null;
+        } else {
+          this.head.prev = null;
+        }
+      } else if (position === this.length - 1) {
+        current = this.tail;
+        this.tail = current.prev;
+        this.tail.next = null;
+      } else {
+        while (index++ < position) {
+          previous = current;
+          current = current.next;
+        }
+        previous.next = current.next;
+        current.next.prev = previous;
+      }
+      this.length--;
+      return current.element;
+    } else {
+      return null;
+    }
+  }
+
+  printList() {
+    let current = this.head;
+    let str = "";
+    while (current != null) {
+      str = str + current.element + " ";
+      current = current.next;
+    }
+    console.log(str);
+  }
+
+  size_of_list() {
+    console.log(this.length);
+  }
+}
+
+let d1 = new DoubleLinkedlist();
+d1.add(1);
+d1.add(2);
+d1.add(23);
+d1.add(24);
+d1.printList();
+d1.removeAt(2);
+d1.printList();
+d1.insertAt(2, 20);
+d1.printList();
+d1.size_of_list();
+</script>
+</body>
+</html>
+

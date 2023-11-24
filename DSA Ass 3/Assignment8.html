@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fibonacci Number</title>
+</head>
+<body>
+  <script>
+  console.log("Akshay Takalkar");
+  console.log(23006);
+  function longestCommonSubstring(str1, str2) {
+  const dp = Array(str1.length + 1).fill().map(() => Array(str2.length + 1).fill(0));
+  let maxLength = 0;
+  
+  for (let i = 1; i <= str1.length; i++) {
+    for (let j = 1; j <= str2.length; j++) {
+      if (str1[i - 1] === str2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+        maxLength = Math.max(maxLength, dp[i][j]);
+      } else {
+        dp[i][j] = 0;
+      }
+    }
+  }
+
+  return maxLength;
+}
+
+const string1 = "abcdef";
+const string2 = "bcdfg";
+console.log("Length of longest common substring:", longestCommonSubstring(string1, string2));
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<body>
+<script>
+console.log("Akshay Takalkar");
+console.log(23006);
+
+function trapRainwater(height) {
+  let waterTrapped = 0;
+
+  for (let i = 1; i < height.length - 1; i++) {
+    let leftMax = 0;
+    let rightMax = 0;
+
+    // Find the maximum height to the left of the current index.
+    for (let j = i - 1; j >= 0; j--) {
+      leftMax = Math.max(leftMax, height[j]);
+    }
+
+    // Find the maximum height to the right of the current index.
+    for (let k = i + 1; k < height.length; k++) {
+      rightMax = Math.max(rightMax, height[k]);
+    }
+
+    // Calculate the water that can be trapped at the current index.
+    const minHeight = Math.min(leftMax, rightMax);
+    if (minHeight > height[i]) {
+      waterTrapped += minHeight - height[i];
+    }
+  }
+
+  return waterTrapped;
+}
+
+const height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
+const result = trapRainwater(height);
+console.log("Total water trapped:", result);
+</script>
+</body>
+</html>

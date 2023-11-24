@@ -1,0 +1,33 @@
+<html>
+<body>
+    <script>
+      console.log("Akshay Takalkar")
+        console.log("23007")
+        function isBalancedParentheses(str) {
+  const stack = [];
+  const openingBrackets = ['(', '[', '{'];
+  const closingBrackets = [')', ']', '}'];
+
+  for (let i = 0; i < str.length; i++) {
+    if (openingBrackets.includes(str[i])) {
+      stack.push(str[i]);
+    } else if (closingBrackets.includes(str[i])) {
+      const matchingOpeningBracket = openingBrackets[closingBrackets.indexOf(str[i])];
+      if (stack.length === 0 || stack.pop() !== matchingOpeningBracket) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+
+// Example usage
+const str1 = "{[()]}";
+console.log(isBalancedParentheses(str1)); // Output: true
+
+const str2 = "{[(])}";
+console.log(isBalancedParentheses(str2)); // Output: false
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<body>
+<script>
+console.log("Akshay Takalkar");
+console.log(23006);
+
+function linearSearch(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      return i; // Return the index if the target is found.
+    }
+  }
+  return -1; // Return -1 if the target is not found.
+}
+
+// Example usage:
+const numbers = [5, 2, 8, 10, 3];
+const targetNumber = 8;
+
+const index = linearSearch(numbers, targetNumber);
+
+if (index !== -1) {
+  console.log(`The target number ${targetNumber} is found at index ${index}.`);
+} else {
+  console.log(`The target number ${targetNumber} is not found in the array.`);
+}
+</script>
+</body>
+</html>

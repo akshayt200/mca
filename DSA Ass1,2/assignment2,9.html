@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+console.log("Akshay Takalkar");
+console.log(23006);
+
+function countWays(n) {
+  if (n <= 1) {
+    return 1;
+  } else if (n === 2) {
+    return 2;
+  } else {
+    return countWays(n - 1) + countWays(n - 2) + countWays(n - 3);
+  }
+}
+
+const numStairs = 4;
+const ways = countWays(numStairs);
+
+console.log(`Number of ways to climb ${numStairs} stairs: ${ways}`);
+</script>
+</body>
+</html>

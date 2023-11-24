@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jump Game Problem</title>
+</head>
+<body>
+  <script>
+  console.log("Akshay Takalkar");
+   console.log(23006);
+    function canJump(nums) {
+        let lastPos = nums.length - 1;
+        for (let i = nums.length - 2; i >= 0; i--) {
+            if (i + nums[i] >= lastPos) {
+                lastPos = i;
+            }
+        }
+        return lastPos === 0;
+    }
+
+    // Test the function
+    const nums1 = [2, 3, 1, 1, 4];
+    console.log(canJump(nums1)); // Output: true
+
+    const nums2 = [3, 2, 1, 0, 4];
+    console.log(canJump(nums2)); // Output: false
+  </script>
+</body>
+</html>

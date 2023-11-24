@@ -1,0 +1,48 @@
+<html>
+<body>
+<script>
+console.log("Akshay Takalkar");
+console.log(23006);
+
+class Graph {
+  constructor() {
+    this.adjacencyList = new Map();
+  }
+
+  addVertex(vertex) {
+    if (!this.adjacencyList.has(vertex)) {
+      this.adjacencyList.set(vertex, []);
+    }
+  }
+
+  addEdge(vertex1, vertex2) {
+    if (this.adjacencyList.has(vertex1) && this.adjacencyList.has(vertex2)) {
+      this.adjacencyList.get(vertex1).push(vertex2);
+      this.adjacencyList.get(vertex2).push(vertex1); // for an undirected graph
+    }
+  }
+
+  printGraph() {
+    for (const [vertex, neighbors] of this.adjacencyList) {
+      console.log(`${vertex} -> ${neighbors.join(', ')}`);
+    }
+  }
+}
+
+const graph = new Graph();
+
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+graph.addVertex('D');
+
+graph.addEdge('A', 'B');
+graph.addEdge('B', 'C');
+graph.addEdge('C', 'D');
+graph.addEdge('D', 'A');
+
+console.log("Graph:");
+graph.printGraph();
+</script>
+</body>
+</html>
